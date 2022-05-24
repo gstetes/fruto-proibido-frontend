@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "fruto-proibido-frontend",
+    "slug": "fruto-proibido-frontend",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
