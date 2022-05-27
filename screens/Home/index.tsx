@@ -24,11 +24,11 @@ const Home: React.FC = () => {
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarStyle: { 
-            backgroundColor: "#000", 
+            backgroundColor: theme.colors.backgroundTab, 
             paddingHorizontal: 16, 
             justifyContent: 'space-between', 
             paddingTop: 10,
-            paddingBottom: 5 
+            paddingBottom: 5,
           },
           tabBarItemStyle: {
             borderRadius: 5
