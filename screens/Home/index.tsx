@@ -40,7 +40,7 @@ const Home: React.FC = () => {
             paddingBottom: 5,
             borderRadius: 15,
             height: 60,
-            elevation: 0,
+            elevation: 1,
             shadowColor: theme.colors.tabBarShadow,
             shadowOffset: {
               height: 0,

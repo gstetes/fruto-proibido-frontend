@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 
 export interface IProduct {
+  id: number;
   name: string;
   description: string;
   price: string;
