@@ -11,7 +11,7 @@ const App: React.FC = () => {
     <ThemeProvider>
       <ProductsProvider>
         <>
-          <StatusBar style='light' translucent={false}/>
+          <StatusBar style='dark' translucent={false}/>
           <Home />
         </> 
       </ProductsProvider>
