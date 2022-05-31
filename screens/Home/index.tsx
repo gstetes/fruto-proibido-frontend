@@ -24,14 +24,27 @@ const Home: React.FC = () => {
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarStyle: { 
-            backgroundColor: theme.colors.backgroundTab, 
+            position: 'absolute',
+            bottom: 15,
+            left: 15,
+            right: 15,
+            backgroundColor: theme.colors.background, 
             paddingHorizontal: 16, 
-            justifyContent: 'space-between', 
             paddingTop: 10,
             paddingBottom: 5,
+            borderRadius: 15,
+            height: 60,
+            elevation: 0,
+            shadowColor: theme.colors.tabBarShadow,
+            shadowOffset: {
+              height: 0,
+              width: 0,
+            },
+            shadowOpacity: 1,
+            shadowRadius: 5,
           },
           tabBarItemStyle: {
-            borderRadius: 5
+            borderRadius: 10,
           },
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -57,9 +70,9 @@ const Home: React.FC = () => {
             return <Ionicons name={iconName} size={size} color={color}/>
           },
           tabBarActiveTintColor: theme.colors.primary300,
-          tabBarActiveBackgroundColor: theme.colors.primary500,
-          tabBarInactiveTintColor: theme.colors.text500,
-          tabBarInactiveBackgroundColor: theme.colors.backgroundTab,
+          tabBarActiveBackgroundColor: theme.colors.primary100,
+          tabBarInactiveTintColor: theme.colors.text700,
+          tabBarInactiveBackgroundColor: theme.colors.background,
           tabBarShowLabel: false
         })}
         initialRouteName="Products"

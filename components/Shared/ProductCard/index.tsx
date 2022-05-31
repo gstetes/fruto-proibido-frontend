@@ -1,5 +1,14 @@
 import React from 'react';
-import { Container, Price, PriceContainer, ProductImage, ProductName, ProductNameContainer } from './styles';
+import { 
+  Container, 
+  Price,
+  PriceContainer, 
+  ProductImage, 
+  ProductName, 
+  ProductNameContainer,
+  SeeMore,
+  ProductDescription,
+ } from './styles';
 import PressableContainer from '../PressableContainer';
 import { useProducts } from '../../../contexts/Products';
 import { IProduct } from '../../../contexts/Products/types';
@@ -28,10 +37,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <ProductNameContainer>
           <ProductName>{product.name}</ProductName>
         </ProductNameContainer>
+        <ProductDescription>
+          {product.description}
+        </ProductDescription>
         <PriceContainer>
           <Price>
             {`R$ ${product.price}`}
           </Price>
+          <SeeMore>
+            ver mais
+          </SeeMore>
         </PriceContainer>
       </Container>
     </PressableContainer>

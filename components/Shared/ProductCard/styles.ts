@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.View`
-  background-color: ${(props) => props.theme.colors.backgroundProductCard};
+  background-color: ${(props) => props.theme.colors.background};
   max-width: 48%;
   min-width: 48%;
   border-radius: 10px;
@@ -11,8 +11,7 @@ export const Container = styled.View`
 export const ProductImage = styled.Image`
   width: 100%;
   height: 160px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-radius: 10px;
 `;
 
 export const ProductNameContainer = styled.View`
@@ -22,6 +21,7 @@ export const ProductNameContainer = styled.View`
 `;
 
 export const ProductName = styled.Text`  
+  color: ${(props) => props.theme.colors.text500};
 `;
 
 export const PriceContainer = styled.View`
@@ -35,5 +35,16 @@ export const PriceContainer = styled.View`
 
 export const Price = styled.Text`
   font-weight: bold;
-  color: ${(props) => props.theme.colors.secundary300};
+  color: ${(props) => props.theme.colors.text700};
+`;
+
+export const SeeMore = styled.Text`
+  color: ${(props) => props.theme.colors.primary500};
+`;
+
+export const ProductDescription = styled.Text`
+  padding: 0 5px;
+  margin-top: 5px;
+
+  color: ${(props) => props.theme.colors.text300};
 `;

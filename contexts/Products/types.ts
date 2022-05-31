@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 
 export interface IProduct {
   name: string;
+  description: string;
   price: string;
   imageUrl: string;
 };

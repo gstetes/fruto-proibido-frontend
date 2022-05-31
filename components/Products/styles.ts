@@ -14,7 +14,7 @@ export const ProductsContainer = styled.View`
 `;
 
 export const Title = styled.Text`
-  color: ${(props) => props.theme.colors.text500};
+  color: ${(props) => props.theme.colors.text700};
   font-weight: bold;
   font-size: 20px;
   margin-bottom: 16px;
