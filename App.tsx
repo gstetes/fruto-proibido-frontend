@@ -5,16 +5,19 @@ import Home from './screens/Home';
 
 import { ThemeProvider } from './contexts/theme';
 import { ProductsProvider } from './contexts/Products';
+import { ScreenProvider } from './contexts/Screen';
 
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <ProductsProvider>
-        <>
-          <StatusBar style='dark' translucent={false}/>
-          <Home />
-        </> 
-      </ProductsProvider>
+      <ScreenProvider>
+        <ProductsProvider>
+          <>
+            <StatusBar style='dark' translucent={false}/>
+            <Home />
+          </> 
+        </ProductsProvider>
+      </ScreenProvider>
     </ThemeProvider>
   );
 };

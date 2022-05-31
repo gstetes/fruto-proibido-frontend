@@ -2,51 +2,40 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${(props) => props.theme.colors.background};
-  margin-top: 16px;
 `;
 
-export const ProductImage = styled.Image`
-  width: 100%;
-  height: 250px;
-`;
-
-export const ProductNameContainer = styled.View`
-  margin-top: 30px;
-  padding: 0 10px;
-`;
-
-export const ProductName = styled.Text` 
-  font-size: 20px;
-  color: ${(props) => props.theme.colors.text300};
-  font-weight: bold;
-`;
-
-export const PriceContainer = styled.View`
-  padding: 0 10px;
-  margin-top: 30px;
-`;
-
-export const Price = styled.Text`
-  font-weight: bold;
-  color: ${(props) => props.theme.colors.primary300};
-  font-size: 25px;
-`;
-
-export const ButtonContainer = styled.View`
+export const Image = styled.ImageBackground`
   flex: 1;
+`;
+
+export const ContentContainer = styled.View`
+  padding-top: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 16px;
+  flex: 1;
+`;
+
+export const HeaderContent = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const ProductDetailContent = styled.View`
+  flex: 1;
+  margin-bottom: 16px;
   justify-content: flex-end;
 `;
 
-export const Button = styled.TouchableOpacity`
-  height: 60px;
-  background-color: ${(props) => props.theme.colors.primary300};
-  align-items: center;
-  justify-content: center;
+export const ProductDetailCard = styled.View`
+  height: 300px;
+  width: 100%;
+  background-color: ${(props) => props.theme.colors.background};
+  border-radius: 10px;
 `;
 
-export const ButtonText = styled.Text`
-  color: ${(props) => props.theme.colors.text300};
-  font-size: 20px;
-  font-weight: bold;
-`
+export const ProductTitle = styled.Text``;
+
+export const ProductPrice = styled.Text``;
+
+export const ProductDescription = styled.Text``;

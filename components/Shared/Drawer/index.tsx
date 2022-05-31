@@ -8,6 +8,7 @@ interface DrawerProps {
   content: ReactElement;
   isOpen: boolean;
   onClose(): void;
+  openDrawerOffset?: number;
 };
 
 const Drawer: React.FC<DrawerProps> = ({ 
@@ -15,19 +16,20 @@ const Drawer: React.FC<DrawerProps> = ({
   content,
   isOpen,
   onClose, 
+  openDrawerOffset = 0,
 }) => {
   const { theme }  = useTheme();
 
   return (
     <ReactDrawer
       type="overlay"
-      openDrawerOffset={0.1}
+      openDrawerOffset={openDrawerOffset}
       closedDrawerOffset={-3}
       open={isOpen}
       tweenHandler={(ratio) => ({
         main: { opacity:(2-ratio)/2 }
       })}
-      panCloseMask={0.2}
+      panCloseMask={openDrawerOffset}
       content={content}
       tapToClose={true}
       acceptPan={true}

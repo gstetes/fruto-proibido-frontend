@@ -11,12 +11,17 @@ import SearchProducts from '../../components/SearchProducts';
 import Favorites from '../../components/Favorites';
 import Cart from '../../components/Cart';
 import Profile from '../../components/Profile';
+
+//Hoks
 import { useTheme } from '../../contexts/theme';
+import { useScreen } from '../../contexts/Screen';
+import { ScreenType } from '../../contexts/Screen/types';
 
 const Tab = createBottomTabNavigator();
 
 const Home: React.FC = () => {
   const { theme } = useTheme();
+  const { screenType } = useScreen();
 
   return (
     <NavigationContainer>
@@ -24,6 +29,7 @@ const Home: React.FC = () => {
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarStyle: { 
+            display: screenType === ScreenType.productDetail ? 'none' : 'flex',
             position: 'absolute',
             bottom: 15,
             left: 15,

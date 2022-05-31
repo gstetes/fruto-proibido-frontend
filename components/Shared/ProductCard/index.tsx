@@ -12,6 +12,8 @@ import {
 import PressableContainer from '../PressableContainer';
 import { useProducts } from '../../../contexts/Products';
 import { IProduct } from '../../../contexts/Products/types';
+import { useScreen } from '../../../contexts/Screen';
+import { ScreenType } from '../../../contexts/Screen/types';
 
 interface ProductCardProps {
   product: IProduct;
@@ -25,11 +27,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
     setActiveProduct
   } = useProducts();
 
+  const { setScreenType } = useScreen();
+
   return (
     <PressableContainer 
       onPress={() => (
         setProductDrawerVisible(true),
-        setActiveProduct(product)
+        setActiveProduct(product),
+        setScreenType(ScreenType.productDetail)
       )}
     >
       <Container>
