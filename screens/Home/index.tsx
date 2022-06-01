@@ -4,6 +4,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { Platform } from 'react-native';
 
 //Screens
 import Products from '../../components/Products';
@@ -12,10 +13,13 @@ import Favorites from '../../components/Favorites';
 import Cart from '../../components/Cart';
 import Profile from '../../components/Profile';
 
-//Hoks
+//Hooks
 import { useTheme } from '../../contexts/theme';
 import { useScreen } from '../../contexts/Screen';
 import { ScreenType } from '../../contexts/Screen/types';
+
+//Utils
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 
 const Tab = createBottomTabNavigator();
 
@@ -31,13 +35,13 @@ const Home: React.FC = () => {
           tabBarStyle: { 
             display: screenType === ScreenType.productDetail ? 'none' : 'flex',
             position: 'absolute',
-            bottom: 15,
+            bottom: Platform.OS === 'ios' ? getBottomSpace() + 15 : 15,
             left: 15,
             right: 15,
             backgroundColor: theme.colors.background, 
             paddingHorizontal: 16, 
             paddingTop: 10,
-            paddingBottom: 5,
+            paddingBottom: 10,
             borderRadius: 15,
             height: 60,
             elevation: 1,
@@ -48,6 +52,7 @@ const Home: React.FC = () => {
             },
             shadowOpacity: 1,
             shadowRadius: 5,
+            justifyContent: 'center'
           },
           tabBarItemStyle: {
             borderRadius: 10,

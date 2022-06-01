@@ -29,7 +29,7 @@ const Drawer: React.FC<DrawerProps> = ({
       tweenHandler={(ratio) => ({
         main: { opacity:(2-ratio)/2 }
       })}
-      panCloseMask={openDrawerOffset}
+      panCloseMask={openDrawerOffset !== 0 ? openDrawerOffset : 0.1}
       content={content}
       tapToClose={true}
       acceptPan={true}

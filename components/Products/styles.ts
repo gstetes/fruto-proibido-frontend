@@ -1,21 +1,14 @@
 import styled from 'styled-components/native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+interface ContainerProps {
+  isIos?: boolean
+};
 
-export const Container = styled.View`
+export const Container = styled.View<ContainerProps>`
   flex: 1;
   background: ${(props) => props.theme.colors.background};
-  padding: 32px 20px;
+  padding-top: ${(props) => props.isIos ? `${getStatusBarHeight() + 10}px` : '32px'};
+  padding-left: 20px;
+  padding-right: 20px;
   width: 100%;
-`;
-
-export const ProductsContainer = styled.View`
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
-`;
-
-export const Title = styled.Text`
-  color: ${(props) => props.theme.colors.text700};
-  font-weight: bold;
-  font-size: 20px;
-  margin-bottom: 16px;
 `;

@@ -3,6 +3,7 @@ import React, { ReactElement, useState } from 'react';
 import { useProducts } from '../../../contexts/Products';
 import { useScreen } from '../../../contexts/Screen';
 import { ScreenType } from '../../../contexts/Screen/types';
+import { useTheme } from '../../../contexts/theme';
 
 import Drawer from '../../Shared/Drawer';
 import Loading from '../../Shared/Loading';
@@ -14,9 +15,16 @@ import {
   HeaderContent,
   ProductDetailContent,
   ProductTitle,
-  ProductDetailCard
+  ProductDetailCard,
+  ProductPrice,
+  ProductDescription,
+  ProductSection,
+  Button,
+  ButtonText,
+  SizeContainer,
+  SizeText,
 } from './styles';
-import { useTheme } from '../../../contexts/theme';
+import { Platform } from 'react-native';
 
 interface ProductDetailDrawerProps {
   children: ReactElement;
@@ -45,6 +53,7 @@ const ProductDetailDrawer: React.FC<ProductDetailDrawerProps> = ({ children }) =
       },
       shadowOpacity: 0.5,
       shadowRadius: 5,
+      elevation: Platform.OS === 'ios' ? 0 : 1,
     }
   }
 
@@ -58,6 +67,7 @@ const ProductDetailDrawer: React.FC<ProductDetailDrawerProps> = ({ children }) =
       )}
       content={
         <Container>
+          {/* @ts-ignore */}
           <Image
             source={{ uri: activeProduct?.imageUrl }}
             resizeMode="cover"
@@ -76,8 +86,22 @@ const ProductDetailDrawer: React.FC<ProductDetailDrawerProps> = ({ children }) =
               </HeaderContent>
               <ProductDetailContent>
                 <ProductDetailCard style={styles.card}>
-                  <ProductTitle>{activeProduct?.name}</ProductTitle>
-
+                  <ProductSection>
+                    <ProductTitle>{activeProduct?.name}</ProductTitle>
+                    <AntDesign name="hearto" size={25} color={theme.colors.primary300}/>
+                  </ProductSection>
+                  <ProductSection>
+                    <ProductPrice>{`R$ ${activeProduct?.price}`}</ProductPrice>
+                    <SizeContainer>
+                      <SizeText>Tamanho</SizeText>
+                    </SizeContainer>
+                  </ProductSection>
+                  <ProductSection style={{ flex: 1 }}>
+                    <ProductDescription>{activeProduct?.description}</ProductDescription>
+                  </ProductSection>
+                  <Button>
+                    <ButtonText>Adicionar ao carrinho</ButtonText>
+                  </Button>
                 </ProductDetailCard>
               </ProductDetailContent>
             </ContentContainer>

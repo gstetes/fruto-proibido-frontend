@@ -2,8 +2,9 @@ import React from  'react';
 
 import ProductCard from '../Shared/ProductCard';
 import ProductDetailDrawer from './ProductDetailDrawer';
-import { Container, ProductsContainer, Title } from './styles';
-import { FlatList } from 'react-native';
+import { Container } from './styles';
+import { FlatList, Platform } from 'react-native';
+import ScreenHeader from '../Shared/ScreenHeader';
 
 const productFake = [
   {
@@ -53,8 +54,8 @@ const productFake = [
 const Products: React.FC = () => {
   return (
     <ProductDetailDrawer>
-      <Container>
-        <Title>Produtos</Title>
+      <Container isIos={Platform.OS === 'ios'}>
+        <ScreenHeader title="Produtos" />
         <FlatList 
           data={productFake}
           numColumns={2}
