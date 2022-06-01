@@ -23,7 +23,9 @@ export const ContentContainer = styled.View<ContentContainerProps>`
 
 export const HeaderContent = styled.View`
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
+  max-width: 55%;
 `;
 
 export const ProductDetailContent = styled.View`
@@ -60,6 +62,7 @@ export const ProductDescription = styled.Text`
 export const ProductSection = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin-top: 16px;
 `;
 
@@ -77,6 +80,8 @@ export const ButtonText = styled.Text`
   font-size: 18px;
 `;
 
-export const SizeContainer = styled.View``;
+export const SizeContainer = styled.View`
+  width: 60%;
+`;
 
-export const SizeText = styled.Text``;
+export const FavoriteButton = styled.TouchableOpacity``;

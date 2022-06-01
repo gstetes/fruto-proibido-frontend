@@ -2,7 +2,9 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   height: 60px;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 `;
 
 export const Title = styled.Text`

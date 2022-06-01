@@ -13,5 +13,9 @@ export default {
     background: '#FFFFFF',
 
     tabBarShadow: "#CCC",
+
   },
+  images: {
+    logo: '../../assets/images/logo_dark.png',
+  }
 };

@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { ReactElement, useEffect, useState } from 'react';
 
 import { useProducts } from '../../../contexts/Products';
 import { useScreen } from '../../../contexts/Screen';
@@ -22,9 +22,10 @@ import {
   Button,
   ButtonText,
   SizeContainer,
-  SizeText,
+  FavoriteButton,
 } from './styles';
-import { Platform } from 'react-native';
+import { Platform, TouchableOpacity } from 'react-native';
+import SelectPicker from '../../Shared/SelectPicker';
 
 interface ProductDetailDrawerProps {
   children: ReactElement;
@@ -32,6 +33,8 @@ interface ProductDetailDrawerProps {
 
 const ProductDetailDrawer: React.FC<ProductDetailDrawerProps> = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const [sizeSelected, setSizeSelected] = useState(null);
+  const [productDetailsVisible, setProductDetailsVisible] = useState(true);
 
   const {
     productDrawerVisible,
@@ -57,6 +60,27 @@ const ProductDetailDrawer: React.FC<ProductDetailDrawerProps> = ({ children }) =
     }
   }
 
+  const items = [
+    {
+      label: "P",
+      value: 'P'
+    },
+    {
+      label: "M",
+      value: 'M'
+    },
+    {
+      label: "G",
+      value: 'G'
+    },
+  ];
+
+  useEffect(() => {
+    if (productDrawerVisible === true) {
+      setProductDetailsVisible(true);
+    };
+  }, [productDrawerVisible]);
+
   return (
     <Drawer 
       isOpen={productDrawerVisible}
@@ -76,34 +100,48 @@ const ProductDetailDrawer: React.FC<ProductDetailDrawerProps> = ({ children }) =
               <HeaderContent>
                 <AntDesign
                   name="leftcircleo"
-                  color={theme.colors.background} size={30}
+                  color={theme.colors.background} 
+                  size={30}
                   onPress={() => (
                     setProductDrawerVisible(false),
                     setActiveProduct(null),
                     setScreenType(ScreenType.home)
                   )}
                 />
+                <AntDesign
+                  name="eyeo" 
+                  size={35} 
+                  color={theme.colors.background} 
+                  onPress={() => setProductDetailsVisible(!productDetailsVisible)}
+                />
               </HeaderContent>
-              <ProductDetailContent>
-                <ProductDetailCard style={styles.card}>
-                  <ProductSection>
-                    <ProductTitle>{activeProduct?.name}</ProductTitle>
-                    <AntDesign name="hearto" size={25} color={theme.colors.primary300}/>
-                  </ProductSection>
-                  <ProductSection>
-                    <ProductPrice>{`R$ ${activeProduct?.price}`}</ProductPrice>
-                    <SizeContainer>
-                      <SizeText>Tamanho</SizeText>
-                    </SizeContainer>
-                  </ProductSection>
-                  <ProductSection style={{ flex: 1 }}>
-                    <ProductDescription>{activeProduct?.description}</ProductDescription>
-                  </ProductSection>
-                  <Button>
-                    <ButtonText>Adicionar ao carrinho</ButtonText>
-                  </Button>
-                </ProductDetailCard>
-              </ProductDetailContent>
+              {productDetailsVisible && 
+                <ProductDetailContent>
+                  <ProductDetailCard style={styles.card}>
+                    <ProductSection>
+                      <ProductTitle>{activeProduct?.name}</ProductTitle>
+                      <FavoriteButton>
+                        <AntDesign name="hearto" size={25} color={theme.colors.primary300}/>
+                      </FavoriteButton>
+                    </ProductSection>
+                    <ProductSection>
+                      <ProductPrice>{`R$ ${activeProduct?.price}`}</ProductPrice>
+                      <SizeContainer>
+                        <SelectPicker
+                          items={items}
+                          onChange={(value) => setSizeSelected(value)}
+                        />
+                      </SizeContainer>
+                    </ProductSection>
+                    <ProductSection style={{ flex: 1 }}>
+                      <ProductDescription>{activeProduct?.description}</ProductDescription>
+                    </ProductSection>
+                    <Button activeOpacity={0.6}>
+                      <ButtonText>Adicionar ao carrinho</ButtonText>
+                    </Button>
+                  </ProductDetailCard>
+                </ProductDetailContent>
+              }
             </ContentContainer>
           </Image>
         </Container>        
