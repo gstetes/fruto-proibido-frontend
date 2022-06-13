@@ -38,7 +38,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       )}
     >
       <Container>
-        <ProductImage source={{ uri: product.imageUrl }} resizeMode="cover"/>
+        <ProductImage source={{ uri: product.image_url }} resizeMode="cover"/>
         <ProductNameContainer>
           <ProductName>{product.name}</ProductName>
         </ProductNameContainer>
